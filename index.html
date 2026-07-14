@@ -3,23 +3,63 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Comping — Privacy Policy</title>
+<title>Comping — See eBay sold prices on any product page</title>
 <style>
   :root { color-scheme: dark light; }
+  * { box-sizing: border-box; }
   body {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
+    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
     background: #0f1115;
     color: #e8e9ed;
+    line-height: 1.6;
   }
-  h1 { font-size: 26px; margin-bottom: 4px; }
-  .updated { color: #9295a3; font-size: 14px; margin-bottom: 32px; }
-  h2 { font-size: 18px; margin-top: 32px; color: #f4f5f7; }
-  ul { padding-left: 20px; }
-  li { margin-bottom: 6px; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; }
+  .brand-dot { width: 12px; height: 12px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 10px rgba(34,197,94,0.6); }
+  .brand-name { font-weight: 700; font-size: 18px; }
+  h1 { font-size: 32px; line-height: 1.25; margin: 0 0 12px; color: #f4f5f7; }
+  .tagline { font-size: 17px; color: #9295a3; margin: 0 0 32px; max-width: 520px; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+  .btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .btn-primary { background: #22c55e; color: #0c1a10; }
+  .btn-primary:hover { background: #34d174; }
+  .btn-secondary { background: transparent; color: #c3c5cf; border: 1px solid #2b2e38; }
+  .btn-secondary:hover { background: #1a1c23; }
+  h2 { font-size: 20px; color: #f4f5f7; margin: 48px 0 16px; }
+  .card {
+    background: #14151a;
+    border: 1px solid #2b2e38;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 15px; color: #f4f5f7; }
+  .card p { margin: 0; font-size: 14px; color: #9295a3; }
+  .pricing { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+  .plan {
+    flex: 1;
+    min-width: 220px;
+    background: #14151a;
+    border: 1px solid #2b2e38;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .plan.highlight { border-color: #22c55e; }
+  .plan-name { font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: #8a8d99; margin-bottom: 8px; }
+  .plan-price { font-size: 26px; font-weight: 800; color: #f4f5f7; margin-bottom: 4px; }
+  .plan-price span { font-size: 13px; font-weight: 400; color: #8a8d99; }
+  .plan ul { margin: 12px 0 0; padding-left: 18px; font-size: 13.5px; color: #c3c5cf; }
+  .plan li { margin-bottom: 4px; }
+  footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid #2b2e38; font-size: 13px; color: #71747f; }
+  footer a { color: #9295a3; }
   a { color: #22c55e; }
   code {
     background: #1a1c23;
@@ -28,53 +68,87 @@
     padding: 1px 6px;
     font-size: 0.9em;
   }
-  strong { color: #f4f5f7; }
   @media (prefers-color-scheme: light) {
     body { background: #ffffff; color: #1a1c23; }
-    .updated { color: #6b6f7a; }
-    h2 { color: #0f1115; }
-    code { background: #f4f5f7; border-color: #dcdfe4; }
-    strong { color: #0f1115; }
+    h1, h2, .brand-name, .card h3, .plan-price { color: #0f1115; }
+    .tagline, .card p, footer { color: #6b6f7a; }
+    .card, .plan { background: #f7f8fa; border-color: #dcdfe4; }
+    .btn-secondary { color: #1a1c23; border-color: #dcdfe4; }
+    .btn-secondary:hover { background: #f0f1f3; }
+    code { background: #f0f1f3; border-color: #dcdfe4; }
   }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<h1>Comping Privacy Policy</h1>
-<div class="updated">Last updated: 2026-07-14</div>
+  <div class="brand">
+    <div class="brand-dot"></div>
+    <div class="brand-name">Comping</div>
+  </div>
 
-<p>Comping ("the extension") helps resellers check what similar items have recently sold for on eBay, while viewing a product on any other website.</p>
+  <h1>See what similar items just sold for on eBay — on any product page.</h1>
+  <p class="tagline">Comping is a browser extension for resellers doing online arbitrage. It shows eBay sold prices and an estimated profit margin for whatever you're looking at, so you can tell in seconds whether an item is worth flipping.</p>
 
-<h2>What Comping stores, and where</h2>
-<p>Everything Comping stores lives <strong>only on your own device</strong>, in the browser's local extension storage (<code>chrome.storage.local</code> / <code>chrome.storage.session</code>). None of it is transmitted to, or stored on, any server operated by Comping — Comping has no backend server at all.</p>
-<p>Specifically, Comping stores:</p>
-<ul>
-  <li>The list of sites you've chosen to disable via "Don't show on this site again"</li>
-  <li>A count of how many eBay lookups you've made today, to enforce the free daily limit</li>
-  <li>Whether you've already seen the one-time introductory tooltip</li>
-  <li>A short-lived (5-minute) local cache of eBay sold-price results, so repeat lookups for the same item don't re-fetch unnecessarily</li>
-</ul>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#pricing">See pricing</a>
+    <a class="btn btn-secondary" href="/privacy/">Privacy policy</a>
+  </div>
 
-<h2>What Comping sends to eBay</h2>
-<p>When you check an item, Comping's background script sends a search query — derived from the product name on the page you're viewing — directly to eBay's own servers (ebay.com, or the regional eBay site matching the item's currency) to retrieve sold-listing prices. This is equivalent to you searching eBay yourself; eBay's own privacy policy governs that request and whatever eBay does with it.</p>
-<p>Some links to eBay (e.g. "View sold listings on eBay") may include eBay Partner Network affiliate tracking parameters. Clicking them takes you to eBay's site under eBay's own privacy policy and terms.</p>
+  <h2>How it works</h2>
+  <div class="card">
+    <h3>Automatic detection</h3>
+    <p>Comping detects product pages using the page's own structured data (the same data Google uses for search results), plus a dedicated detector for Amazon.</p>
+  </div>
+  <div class="card">
+    <h3>One click for the numbers</h3>
+    <p>Click the small badge that appears to see the eBay sold-price median, range, and a profit estimate compared to the page's price — after eBay's fees and shipping.</p>
+  </div>
+  <div class="card">
+    <h3>Works everywhere else too</h3>
+    <p>No product data on the page? Highlight any text, right-click, and choose "Check eBay sold prices" — or use the toolbar search box.</p>
+  </div>
 
-<h2>What Comping reads from the pages you visit</h2>
-<p>To detect a product's name and price, Comping's content script reads structured page data — JSON-LD product markup, Open Graph/meta tags, and (on Amazon product pages specifically) known price/title page elements. This happens entirely inside your browser. None of it is transmitted anywhere except as the search query sent to eBay described above. Comping does not read page content on banking, email, or webmail sites, and does not run at all on pages you've opted out of.</p>
+  <h2>What makes it different</h2>
+  <div class="card">
+    <h3>Currency-aware</h3>
+    <p>Checks the eBay site matching the page's currency (US, UK, Australia, Canada, Germany), so the profit math never mixes currencies.</p>
+  </div>
+  <div class="card">
+    <h3>Only shows up when it should</h3>
+    <p>Never appears on search results, carts, checkout pages, or sites without a clear single product — only real product pages. Per-site opt-out if you don't want it on a given store.</p>
+  </div>
+  <div class="card">
+    <h3>No account, no server</h3>
+    <p>Everything Comping stores lives only in your own browser. Read the <a href="/privacy/">full privacy policy</a>.</p>
+  </div>
 
-<h2>What Comping does not do</h2>
-<ul>
-  <li>No account creation, no sign-in</li>
-  <li>No collection of personal information, browsing history, or page content on any external server</li>
-  <li>No analytics or usage tracking of any kind at this time</li>
-  <li>No sale or sharing of data with third parties, because no data leaves your device in the first place (aside from the eBay search query itself)</li>
-</ul>
+  <h2 id="pricing">Pricing</h2>
+  <div class="pricing">
+    <div class="plan">
+      <div class="plan-name">Free</div>
+      <div class="plan-price">$0</div>
+      <ul>
+        <li>A limited number of free lookups per day</li>
+        <li>Full detection on Amazon and any structured-data site</li>
+        <li>Right-click and popup search</li>
+      </ul>
+    </div>
+    <div class="plan highlight">
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">$9.99 <span>/ month</span></div>
+      <ul>
+        <li>Unlimited daily lookups</li>
+        <li>Everything in Free</li>
+        <li>Billed monthly, cancel anytime</li>
+      </ul>
+    </div>
+  </div>
 
-<h2>Changes to this policy</h2>
-<p>This policy may be updated as Comping's features change. Material changes will be reflected here with an updated date.</p>
+  <footer>
+    Comping — a browser extension for resellers. Questions: <a href="mailto:compingio123@gmail.com">compingio123@gmail.com</a> · <a href="/privacy/">Privacy policy</a>
+  </footer>
 
-<h2>Contact</h2>
-<p>Questions about this policy: <strong><a href="mailto:compingio123@gmail.com">compingio123@gmail.com</a></strong></p>
-
+</div>
 </body>
 </html>
