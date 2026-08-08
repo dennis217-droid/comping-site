@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /uninstall/
+
+Sitemap: https://dennis217-droid.github.io/comping-site/sitemap.xml
